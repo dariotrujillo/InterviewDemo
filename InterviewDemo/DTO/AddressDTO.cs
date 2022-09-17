@@ -1,9 +1,9 @@
 ﻿using InterviewDemo.Abstractions;
 using InterviewDemo.Enums;
 
-namespace InterviewDemo.Model
+namespace InterviewDemo.DTO
 {
-    public sealed class Address: EntityBase, IAddress
+    public class AddressDTO: EntityBaseDTO
     {
         public string AddressLine1 { get; set; } = string.Empty;
         public string? AddressLine2 { get; set; }

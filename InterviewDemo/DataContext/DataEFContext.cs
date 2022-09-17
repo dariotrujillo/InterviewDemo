@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InterviewDemo.DataContext
 {
-    public class DataEFContext: DbContext
+    public sealed class DataEFContext: DbContext
     {
         public DataEFContext(DbContextOptions options) : base(options) { }
         public DbSet<Warehouse> Warehouses { get; set; }

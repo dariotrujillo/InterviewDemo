@@ -2,7 +2,7 @@
 
 namespace InterviewDemo.Model
 {
-    public class Warehouse : EntityBase, IWarehouse
+    public sealed class Warehouse : EntityBase, IWarehouse
     {
         public string Name { get; set; } = string.Empty;
         public int? LocationId { get; set; }

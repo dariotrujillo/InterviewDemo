@@ -1,12 +1,12 @@
 ﻿using InterviewDemo.Abstractions;
 
-namespace InterviewDemo.Model
+namespace InterviewDemo.DTO
 {
-    public sealed class Package: EntityBase, IPackage
+    public class PackageDTO: EntityBaseDTO
     {
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public int? WarehouseId { get; set; }
-        public Warehouse Warehouse { get; set; } = new Warehouse();
+        public WarehouseDTO Warehouse { get; set; } = new WarehouseDTO();
     }
 }
