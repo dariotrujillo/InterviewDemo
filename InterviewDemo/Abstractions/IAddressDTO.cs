@@ -3,7 +3,7 @@ using InterviewDemo.Model;
 
 namespace InterviewDemo.Abstractions
 {
-    public interface IAddress
+    public interface IAddressDTO
     {
         string AddressLine1 { get; set; }
         string? AddressLine2 { get; set; }

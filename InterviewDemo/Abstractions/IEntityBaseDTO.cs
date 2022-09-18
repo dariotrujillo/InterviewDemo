@@ -1,6 +1,6 @@
 ﻿namespace InterviewDemo.Abstractions
 {
-    public interface IEntityBase
+    public interface IEntityBaseDTO
     {
         public int Id { get; set; }
         public DateTime? CreatedDate { get; set; }

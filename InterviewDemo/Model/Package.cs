@@ -2,11 +2,11 @@
 
 namespace InterviewDemo.Model
 {
-    public sealed class Package: EntityBase, IPackage
+    public class Package: EntityBase, IPackage
     {
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public int? WarehouseId { get; set; }
-        public Warehouse Warehouse { get; set; } = new Warehouse();
+        public Warehouse? Warehouse { get; set; }
     }
 }

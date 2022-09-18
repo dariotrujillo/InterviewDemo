@@ -53,5 +53,12 @@ namespace InterviewDemo.Controllers
         {
             return Ok(await _packageService.Delete(package));
         }
+
+        [Route("GetAllFromWarehouse")]
+        [HttpPost]
+        public async Task<IActionResult> GetAllFromWarehouse([FromBody] int Id)
+        {
+            return Ok(await _packageService.GetAllFromWarehouse(Id));
+        }
     }
 }

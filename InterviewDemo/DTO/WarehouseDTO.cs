@@ -2,11 +2,11 @@
 
 namespace InterviewDemo.DTO
 {
-    public class WarehouseDTO: EntityBaseDTO
+    public class WarehouseDTO: EntityBaseDTO, IWarehouseDTO
     {
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; } = string.Empty;
         public int? LocationId { get; set; }
-        public AddressDTO Location { get; set; } = new AddressDTO();
-        public ICollection<PackageDTO> Packages { get; set; } = new List<PackageDTO>();
+        public AddressDTO? Location { get; set; } = new AddressDTO();
+        public ICollection<PackageDTO>? Packages { get; set; } = new List<PackageDTO>();
     }
 }

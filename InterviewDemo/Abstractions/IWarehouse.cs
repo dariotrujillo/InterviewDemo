@@ -6,6 +6,6 @@ namespace InterviewDemo.Abstractions
     {
         string Name { get; set; }
         int? LocationId { get; set; }
-        Address Location { get; set; }
+        Address? Location { get; set; }
     }
 }

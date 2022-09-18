@@ -3,20 +3,21 @@ using InterviewDemo.Abstractions;
 using InterviewDemo.DTO;
 using InterviewDemo.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace InterviewDemo.Repository
 {
     public abstract class BaseGenericRepository<T, U> : IBaseGenericRepository<U> where T : EntityBase where U : EntityBaseDTO
     {
         private readonly DataEFContext _context;
-        private readonly DbSet<T> _entities;
-        private readonly IMapper _mapper;
-        public BaseGenericRepository(DataEFContext context)
+        protected readonly DbSet<T> _entities;
+        protected readonly IMapper _mapper;
+        public BaseGenericRepository(DataEFContext context, IMapper mapper)
         {
             _context = context;
             _entities = _context.Set<T>();
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<T, U>());
-            _mapper = config.CreateMapper();
+            _mapper = mapper;
         }
 
         public virtual async Task<int> Add(U entityDTO)
@@ -35,7 +36,6 @@ namespace InterviewDemo.Repository
 
         public virtual async Task<U?> Get(int id) 
         {
-            
             var entity = await _entities.FirstOrDefaultAsync(e => e.Id == id);
             return _mapper.Map<U>(entity);
         } 

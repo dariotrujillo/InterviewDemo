@@ -4,6 +4,7 @@ using InterviewDemo.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InterviewDemo.Migrations
 {
     [DbContext(typeof(DataEFContext))]
-    partial class DataEFContextModelSnapshot : ModelSnapshot
+    [Migration("20220918024740_RemoveForeignKeys")]
+    partial class RemoveForeignKeys
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,7 +124,7 @@ namespace InterviewDemo.Migrations
             modelBuilder.Entity("InterviewDemo.Model.Package", b =>
                 {
                     b.HasOne("InterviewDemo.Model.Warehouse", "Warehouse")
-                        .WithMany()
+                        .WithMany("Packages")
                         .HasForeignKey("WarehouseId");
 
                     b.Navigation("Warehouse");
@@ -135,6 +137,11 @@ namespace InterviewDemo.Migrations
                         .HasForeignKey("LocationId");
 
                     b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("InterviewDemo.Model.Warehouse", b =>
+                {
+                    b.Navigation("Packages");
                 });
 #pragma warning restore 612, 618
         }

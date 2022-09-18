@@ -1,4 +1,5 @@
-﻿using InterviewDemo.Abstractions;
+﻿using AutoMapper;
+using InterviewDemo.Abstractions;
 using InterviewDemo.Model;
 using InterviewDemo.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -7,16 +8,17 @@ namespace InterviewDemo.Services
 {
     public abstract class BaseGenericService<T> : IBaseGenericService<T> where T : class
     {
-        IBaseGenericRepository<T> _repository;
-       
-        public BaseGenericService(IBaseGenericRepository<T> repository)
+        protected IBaseGenericRepository<T> _repository;
+        private readonly IMapper _mapper;
+
+        public BaseGenericService(IBaseGenericRepository<T> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public virtual async Task<int> Add(T entity)
         {
-
             return await _repository.Add(entity);
         }
 
