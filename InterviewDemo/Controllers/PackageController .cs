@@ -41,17 +41,24 @@ namespace InterviewDemo.Controllers
         }
 
         [Route("UpdatePackage")]
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> UpdatePackage([FromBody] PackageDTO package)
         {
             return Ok(await _packageService.Update(package));
         }
 
         [Route("DeletePackage")]
-        [HttpPost]
+        [HttpDelete]
         public async Task<IActionResult> DeletePackage([FromBody] PackageDTO package)
         {
             return Ok(await _packageService.Delete(package));
         }
+
+        //[Route("DeletePackage/{Id}")]
+        //[HttpDelete]
+        //public async Task<IActionResult> DeletePackage(int Id)
+        //{
+        //    return Ok(await _packageService.Delete(Id));
+        //}
     }
 }
