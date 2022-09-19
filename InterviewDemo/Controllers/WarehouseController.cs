@@ -25,9 +25,9 @@ namespace InterviewDemo.Controllers
             return Ok(await _warehouseService.GetAll());
         }
 
-        [Route("GetWarehouse")]
-        [HttpPost]
-        public async Task<IActionResult> GetWarehouse([FromBody]int Id)
+        [Route("GetWarehouse/{Id}")]
+        [HttpGet]
+        public async Task<IActionResult> GetWarehouse(int Id)
         {
             return Ok(await _warehouseService.Get(Id));
         }

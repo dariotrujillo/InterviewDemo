@@ -26,11 +26,11 @@ namespace InterviewDemo.Controllers
             return Ok(await _packageService.GetAll());
         }
 
-        [Route("GetPackage")]
-        [HttpPost]
-        public async Task<IActionResult> GetPackage([FromBody]int? id)
+        [Route("GetPackage/{Id}")]
+        [HttpGet]
+        public async Task<IActionResult> GetPackage(int Id)
         {
-            return Ok(await _packageService.Get(id.Value));
+            return Ok(await _packageService.Get(Id));
         }
 
         [Route("AddPackage")]
