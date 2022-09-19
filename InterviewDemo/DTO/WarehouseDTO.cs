@@ -6,7 +6,7 @@ namespace InterviewDemo.DTO
     {
         public string? Name { get; set; } = string.Empty;
         public int? LocationId { get; set; }
-        public AddressDTO? Location { get; set; } = new AddressDTO();
-        public ICollection<PackageDTO>? Packages { get; set; } = new List<PackageDTO>();
+        public AddressDTO? Location { get; set; }
+        public ICollection<PackageDTO>? Packages { get; set; }
     }
 }

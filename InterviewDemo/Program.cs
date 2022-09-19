@@ -7,6 +7,7 @@ using InterviewDemo.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -26,6 +27,20 @@ builder.Services.AddScoped<DataEFContext>();
 builder.Services.AddScoped<IWarehouseService<WarehouseDTO>>(sv => new WarehouseService(sv.GetService<DataEFContext>(), mapper));
 builder.Services.AddScoped<IPackageService<PackageDTO>>(sv => new PackageService(sv.GetService<DataEFContext>(), mapper));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.WithOrigins("http://localhost:5173",
+                                              "https://localhost:5173",
+                                              "https://localhost:7216")
+                                                .AllowAnyMethod()
+                                                .AllowAnyOrigin()
+                                                .AllowAnyHeader(); 
+                      });
+});
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -33,6 +48,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+//Enable Cors
+app.UseCors(MyAllowSpecificOrigins);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

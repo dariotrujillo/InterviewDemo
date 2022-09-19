@@ -21,44 +21,37 @@ namespace InterviewDemo.Controllers
 
         [Route("GetAllPackages")]
         [HttpPost]
-        public async Task<IActionResult> GetAllWarehouses()
+        public async Task<IActionResult> GetAllPackages()
         {
             return Ok(await _packageService.GetAll());
         }
 
         [Route("GetPackage")]
         [HttpPost]
-        public async Task<IActionResult> GetWarehouse([FromBody]int Id)
+        public async Task<IActionResult> GetPackage([FromBody]int? id)
         {
-            return Ok(await _packageService.Get(Id));
+            return Ok(await _packageService.Get(id.Value));
         }
 
         [Route("AddPackage")]
         [HttpPost]
-        public async Task<IActionResult> AddWarehouse([FromBody] PackageDTO package)
+        public async Task<IActionResult> AddPackage([FromBody] PackageDTO package)
         {
             return Ok(await _packageService.Add(package));
         }
 
         [Route("UpdatePackage")]
         [HttpPost]
-        public async Task<IActionResult> UpdateWarehouse([FromBody] PackageDTO package)
+        public async Task<IActionResult> UpdatePackage([FromBody] PackageDTO package)
         {
             return Ok(await _packageService.Update(package));
         }
 
         [Route("DeletePackage")]
         [HttpPost]
-        public async Task<IActionResult> DeleteWarehouse([FromBody] PackageDTO package)
+        public async Task<IActionResult> DeletePackage([FromBody] PackageDTO package)
         {
             return Ok(await _packageService.Delete(package));
-        }
-
-        [Route("GetAllFromWarehouse")]
-        [HttpPost]
-        public async Task<IActionResult> GetAllFromWarehouse([FromBody] int Id)
-        {
-            return Ok(await _packageService.GetAllFromWarehouse(Id));
         }
     }
 }

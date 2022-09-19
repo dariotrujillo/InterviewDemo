@@ -8,9 +8,9 @@ namespace InterviewDemo.Automapper
     {
         public AutomapperProfiles()
         {
-            CreateMap<Address, AddressDTO>();
-            CreateMap<Warehouse, WarehouseDTO>();
-            CreateMap<Package, PackageDTO>();
+            CreateMap<Address, AddressDTO>().ReverseMap();
+            CreateMap<Warehouse, WarehouseDTO>().ReverseMap();
+            CreateMap<Package, PackageDTO>().ReverseMap();
         }
     }
 }
